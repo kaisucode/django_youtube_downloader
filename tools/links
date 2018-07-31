@@ -2,3 +2,10 @@
 Django tutorials
 https://docs.djangoproject.com/en/2.0/intro/tutorial01/
 
+Access a file from root of django project safe work-around
+https://stackoverflow.com/a/50130988
+
+Set template view folder location
+https://stackoverflow.com/a/15411829
+// This is the better and cleaner solution
+
