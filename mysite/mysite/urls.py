@@ -20,5 +20,6 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name='homepage.html'), name='home'),
+    url(r'^submit_link/', TemplateView.as_view(template_name='homepage.html'), name='home'),
     path('admin/', admin.site.urls),
 ]

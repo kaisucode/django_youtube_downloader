@@ -13,15 +13,17 @@
 			<div id="title">
 				Youtube to mp3 converter
 			</div>
-			<input id="url_input" name="city" type="text" value="{{ form.city.value }}">
 
-			<div class="button_container">
-				<button id="submit_button" type="submit">Download &ltEnter&gt</button>
-			</div>
+			<form action="/submit_link" method="GET" autocomplete="off">
+				<input id="url_input" name="url_input" type="text" value="{{ form.city.value }}">
+				<div class="button_container">
+					<button id="submit_button" type="submit">Download &ltEnter&gt</button>
+				</div>
 
-			<div class="error_message">
-				Link is invalid
-			</div>
+				<div class="error_message" style="display: {{displayErrorVar}};">
+					Link is invalid
+				</div>
+			</form>
 
 		</div>
 	</body>
