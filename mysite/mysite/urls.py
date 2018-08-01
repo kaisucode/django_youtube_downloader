@@ -20,7 +20,5 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name='homepage.html'), name='home'),
-    #  url(r'^$', get_template('homepage.html')),
-    #  path(r'^$', "static/homepage.html"),
     path('admin/', admin.site.urls),
 ]
