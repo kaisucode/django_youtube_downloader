@@ -5,7 +5,6 @@ from django.views.generic import TemplateView
 from django.shortcuts import render
 
 import youtube_dl
-import time
 
 def index(request): 
     return render(request, "homepage.html")
@@ -15,7 +14,6 @@ def submit_link(request):
     try:
         ytLink = request.GET["url_input"]
 
-        currentTime = time.strftime("%Y%m%d-%H%M%S")
         ydl_opts = {
             'format': 'bestaudio/best',
             'postprocessors': [{
@@ -23,7 +21,7 @@ def submit_link(request):
                 'preferredcodec': 'mp3',
                 'preferredquality': '320',
             }],
-            'outtmpl': currentTime+'/%(title)s.%(ext)s',
+            'outtmpl': 'mp3/%(title)s.%(ext)s',
         }
 
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
