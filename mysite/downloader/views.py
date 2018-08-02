@@ -29,8 +29,7 @@ def submit_link(request):
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             result = ydl.extract_info(ytLink, download=True)
 
-
-        return render(request, "homepage.html", {"displayErrorVar": False})
+        return render(request, "homepage.html", {"displayErrorVar": False, "shouldPauseEnter": "false"})
     except Exception as e:
-        return render(request, "homepage.html", {'displayErrorVar': True})
+        return render(request, "homepage.html", {'displayErrorVar': True, "shouldPauseEnter": "true"})
 

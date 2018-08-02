@@ -7,7 +7,8 @@
 		<title>Youtube Downloader</title>
 		<link rel="stylesheet" href="{% static 'downloader/css/homepage.css' %}"/>
 
-		<script src="node_modules/jquery/dist/jquery.min.js"></script>
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
 
 	</head>
 	<body>
@@ -17,12 +18,25 @@
 				Youtube to mp3 converter
 			</div>
 
-			<form action="/submit_link" method="GET" autocomplete="off">
+			<form id="my-form" action="/submit_link" method="GET" autocomplete="off">
 				<input id="url_input" name="url_input" type="text" value="">
 				<div class="button_container">
 					<button id="submit_button" type="submit">Download &ltEnter&gt</button>
 				</div>
-				<script src="js/main.js"></script>
+
+				<script>
+
+					var shouldPauseEnter = {{ shouldPauseEnter|yesno:"true, false" }};
+					document.getElementById('my-form').onsubmit = function() {
+						if (shouldPauseEnter)
+							return false;
+						else{
+							shouldPauseEnter = true;
+							return true;
+						}
+					};
+
+				</script>
 
 
 				<div class="error_message" style="display: {{ displayErrorVar|yesno:"block, none" }};">
