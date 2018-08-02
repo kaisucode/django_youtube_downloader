@@ -19,10 +19,7 @@ from django.conf.urls import url
 from django.views.generic import TemplateView
 
 urlpatterns = [
-    #  url(r'^$', include('downloader.urls')),
     url(r'^$', TemplateView.as_view(template_name='homepage.html'), name='home'),
-    #  url(r'^submit_link/', TemplateView.as_view(template_name='homepage.html'), name='home'),
-    #  path('downloader/', include('downloader.urls')),
     path('submit_link/', include('downloader.urls')),
     path('admin/', admin.site.urls),
 ]

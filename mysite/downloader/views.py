@@ -6,15 +6,15 @@ from django.shortcuts import render
 
 def index(request): 
     return render(request, "homepage.html")
-    #  return HttpResponse("Hello world, you're at my illegal website. ")
+    #  return HttpResponse("Haii")
 
 def submit_link(request): 
-    print("hello world")
-    if request.method == 'GET': 
-        fout = open("hai.txt", "w")
-        #  ytLink = request.GET["text"]
+    try:
         ytLink = request.GET["url_input"]
-        fout.write(ytLink)
-        fout.close()
-        return render(request, "homepage.html")
+        #  fout = open("hai.txt", "w")
+        #  fout.write(ytLink)
+        #  fout.close()
+        return render(request, "homepage.html", {"displayErrorVar": False})
+    except Exception as e:
+        return render(request, "homepage.html", {'displayErrorVar': True})
 
