@@ -28,7 +28,7 @@
 	border-color: #00FFF2;
 	color: white;
 }
-#submit_button:active {
+.click_animation:active {
   transform: translateY(0.3vh);
 }
 
@@ -53,7 +53,7 @@
 	color: white;
 }
 
-.error_message{
+#error_message{
 	margin: 2.5vh;
 	font-size: 3vh;
 	color: red;

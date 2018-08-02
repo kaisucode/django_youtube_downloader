@@ -1,0 +1,4 @@
+
+Use the timestamp in hex and add to filename to use as id
+Add file sending to client
+

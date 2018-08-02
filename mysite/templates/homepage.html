@@ -21,17 +21,23 @@
 			<form id="my-form" action="/submit_link" method="GET" autocomplete="off">
 				<input id="url_input" name="url_input" type="text" value="">
 				<div class="button_container">
-					<button id="submit_button" type="submit">Download &ltEnter&gt</button>
+					<button id="submit_button" class="click_animation" type="submit">Download &ltEnter&gt</button>
 				</div>
 
 				<script>
 
-					var shouldPauseEnter = {{ shouldPauseEnter|yesno:"true, false" }};
+					var shouldPauseEnter = false;
 					document.getElementById('my-form').onsubmit = function() {
-						if (shouldPauseEnter)
+						if (shouldPauseEnter){
+							console.log("blocked enter");
 							return false;
+						}
 						else{
 							shouldPauseEnter = true;
+							$("#submit_button").html("Converting...");
+							$("#submit_button").removeClass("click_animation");
+							$("#error_message").css("display", "none");
+							console.log("removed animation click");
 							return true;
 						}
 					};
@@ -39,7 +45,7 @@
 				</script>
 
 
-				<div class="error_message" style="display: {{ displayErrorVar|yesno:"block, none" }};">
+				<div id="error_message" style="display: {{ displayErrorVar|yesno:"block, none" }};">
 					Link is invalid
 				</div>
 			</form>
