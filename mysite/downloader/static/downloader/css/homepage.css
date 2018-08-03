@@ -1,7 +1,8 @@
 
 *{
 	background-color: black;
-	overflow: hidden;
+	/* overflow: hidden; */
+	overflow: visible;
 }
 
 .container{

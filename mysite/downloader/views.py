@@ -30,19 +30,19 @@ def submit_link(request):
             'outtmpl': 'mp3/%(title)s.%(ext)s',
         }
 
-        #  with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-        #      result = ydl.extract_info(ytLink, download=True)
+        with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+            result = ydl.extract_info(ytLink, download=True)
 
-        #  filePath = settings.BASE_DIR + "/mp3/" + result.get("title", None)+".mp3"
-        filePath = settings.BASE_DIR + "/mp3/test.mp3"
-
+        songBaseName = result.get("title", None)+".mp3"
+        filePath = settings.BASE_DIR + "/mp3/" + songBaseName
 
         contents = open(filePath, "rb")
         wrapper = FileWrapper( contents )
 
-        response = HttpResponse(wrapper, content_type = "audio/mpeg")
+        #  response = HttpResponse(wrapper, content_type = "audio/mpeg")
+        response = HttpResponse(wrapper, content_type = "application/force-download")
         response['Content-Length'] = os.path.getsize( filePath ) # not FileField instance
-        response['Content-Disposition'] = 'attachment; filename=%s' % os.path.basename( filePath )
+        response['Content-Disposition'] = 'attachment; filename="{}"'.format(songBaseName)
         return response
 
 
