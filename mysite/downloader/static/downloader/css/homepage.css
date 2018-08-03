@@ -14,17 +14,21 @@
 .button_container{
 	width: 100%;
 	overflow: visible !important;
+	float: left;
 }
 
-#submit_button{
+.button_container button{
 	height: 8vh;
 	width: 28vh;
 	font-size: 3vh;
 	color: #00FFF2;
 	border: 0.3vh solid white;
 	border-radius: 0.5vh;
+	margin-left: 2vh;
+	margin-right: 2vh;
 }
-#submit_button:hover {
+
+.button_container button:hover {
 	border-color: #00FFF2;
 	color: white;
 }

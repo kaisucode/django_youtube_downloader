@@ -3,6 +3,8 @@ from __future__ import unicode_literals
 from django.http import HttpResponse
 from django.views.generic import TemplateView
 from django.shortcuts import render
+from django.conf import settings
+
 
 import youtube_dl
 
@@ -26,9 +28,10 @@ def submit_link(request):
 
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             result = ydl.extract_info(ytLink, download=True)
-        songFilename = "mp3/"+result.get("title", None)+".mp3"
+        #  songFilename = settings.BASE_DIR + "/mp3/" + result.get("title", None)+".mp3"
+        songFilename = settings.BASE_DIR + "/mp3/test.mp3"
 
-        return render(request, "homepage.html", {"displayErrorVar": False, "shouldPauseEnter": "false"})
+        return render(request, "homepage.html", {"displayErrorVar": False, "shouldPauseEnter": "false", "song_url": songFilename})
     except Exception as e:
         print(e)
         print("exception")

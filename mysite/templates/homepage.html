@@ -19,10 +19,12 @@
 			</div>
 
 			<form id="my-form" action="/submit_link" method="GET" autocomplete="off">
-				<input id="url_input" name="url_input" type="text" value="">
+				<!-- <input id="url_input" name="url_input" type="text" value=""> -->
+				<input id="url_input" name="url_input" type="text" value="https://www.youtube.com/watch?v=7ivuzPd3lfs">
 				<div class="button_container">
-					<button id="submit_button" class="click_animation" type="submit">Download &ltEnter&gt</button>
+					<button id="submit_button" class="click_animation" type="submit">Convert &ltEnter&gt</button>
 				</div>
+
 
 				<script>
 
@@ -49,6 +51,13 @@
 					Link is invalid
 				</div>
 			</form>
+
+				<div class="button_container">
+					<!-- <link rel="stylesheet" href="{% static 'downloader/css/homepage.css' %}"/> -->
+					<a href="{{ song_url }}" download>
+						<button id="download_button" class="click_animation">Download</button>
+					</a>
+				</div>
 
 		</div>
 	</body>
