@@ -26,8 +26,11 @@ def submit_link(request):
 
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             result = ydl.extract_info(ytLink, download=True)
+        songFilename = "mp3/"+result.get("title", None)+".mp3"
 
         return render(request, "homepage.html", {"displayErrorVar": False, "shouldPauseEnter": "false"})
     except Exception as e:
+        print(e)
+        print("exception")
         return render(request, "homepage.html", {'displayErrorVar': True, "shouldPauseEnter": "true"})
 
